@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CoreService\TenniscourtFeeRegistService;
+use App\CoreService\Tenniscourt\TenniscourtFeeRegistService;
 
 class TenniscourtFeeRegistServiceProvider extends ServiceProvider
 {

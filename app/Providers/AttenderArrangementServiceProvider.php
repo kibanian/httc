@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\CoreService\AttenderArrangementService;
+use App\CoreService\Attend\AttenderArrangementService;
 use Illuminate\Support\ServiceProvider;
 
 class AttenderArrangementServiceProvider extends ServiceProvider

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CoreService\AttenderArrangementFacade;
+use App\CoreService\Attend\AttenderArrangementFacade;
 
 class AttenderArrangementFacadeServiceProvider extends ServiceProvider
 {

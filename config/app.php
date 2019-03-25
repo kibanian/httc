@@ -190,7 +190,12 @@ return [
         App\Providers\CourtFeeCalcServiceProvider::class,
         App\Providers\AttendFeeFacadeServiceProvider::class,
         App\Providers\CardTypeRegistServiceProvider::class,
-        App\Providers\CardRegistServiceProvider::class
+        App\Providers\CardRegistServiceProvider::class,
+        App\Providers\EventSelectServiceProvider::class,
+        App\Providers\AttendSelectServiceProvider::class,
+        App\Providers\UserRegistServiceProvider::class,
+        App\Providers\UserSelectServiceProvider::class,
+        App\Providers\LoginServiceProvider::class
     ],
 
     /*

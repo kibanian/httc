@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CoreService\CardRegistService;
+use App\CoreService\Card\CardRegistService;
 
 class CardRegistServiceProvider extends ServiceProvider
 {

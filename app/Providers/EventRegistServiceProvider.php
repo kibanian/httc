@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CoreService\EventRegistService;
+use App\CoreService\Event\EventRegistService;
 
 class EventRegistServiceProvider extends ServiceProvider
 {

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CoreService\AttendFeeCalcService;
+use App\CoreService\Attend\AttendFeeCalcService;
 
 class AttendFeeCalcServiceProvider extends ServiceProvider
 {

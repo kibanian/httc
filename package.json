@@ -24,6 +24,9 @@
         "vue-template-compiler": "^2.5.21"
     },
     "dependencies": {
+        "css-loader": "^2.1.0",
+        "material-design-icons-iconfont": "^4.0.3",
+        "vue-loader": "^15.5.0",
         "vue-router": "^3.0.2",
         "vuetify": "^1.4.0",
         "vuex": "^3.0.1"

@@ -5,7 +5,7 @@
     </head>
     <body>
         <div id="app">
-            <example-component></example-component>
+            <base-component></base-component>
         </div>
     </body>
     <script src="{{ mix('js/app.js') }}"></script>

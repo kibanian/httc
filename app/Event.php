@@ -25,7 +25,8 @@ class Event extends Model
         'fee_type',
         'host_id',
         'newcomer_count',
-        'status'
+        'status',
+        'attended_newcomer_count'
     ];
     //
     public function attends()
@@ -35,17 +36,17 @@ class Event extends Model
 
     public function tenniscourt()
     {
-        return $this->hasOne('App\Tenniscourt', 'court_id');
+        return $this->hasOne('App\Tenniscourt', 'id', 'court_id');
     }
 
-    public function cancel()
+    public function cancels()
     {
         return $this->hasMany('App\Cancel');
     }
 
     public function fee_type()
     {
-        return $this->hasOne('App\FeeType', 'fee_type');
+        return $this->hasOne('App\FeeType', 'id', 'name');
     }
 
     public function user()

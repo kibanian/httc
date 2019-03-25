@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\CoreService\EventAttendService;
+use App\CoreService\Event\EventAttendService;
 use Illuminate\Support\ServiceProvider;
 
 class EventAttendServiceProvider extends ServiceProvider

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CoreService\CancelRegistService;
+use App\CoreService\Cancel\CancelRegistService;
 
 class CancelRegistServiceProvider extends ServiceProvider
 {

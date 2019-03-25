@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CoreService\CancelFacade;
+use App\CoreService\Cancel\CancelFacade;
 
 class CancelFacadeServiceProvider extends ServiceProvider
 {

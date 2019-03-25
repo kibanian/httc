@@ -68,10 +68,23 @@ class Attend extends Model
     }
 
     //参加確定
-    public function scopeFindByApproved($query)
+    public function scopeFindApproved($query)
     {
         return $query->where('status', self::APPROVED);
     }
+
+    //キャンセル待ち
+    public function scopeFindWaiting($query)
+    {
+        return $query->where('status', self::WAITING);
+    }
+
+    //キャンセル済
+    public function scopeFindCanceled($query)
+    {
+        return $query->where('status', self::CANCELED);
+    }
+    
 
     //参加表明または参加確定またはキャンセル待ち
     public function scopeFindAppliedOrApprovedOrWaiting($query)

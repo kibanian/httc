@@ -6,17 +6,28 @@ use App;
 use App\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Exception;
 
 class EventController extends Controller
 {
     private $er;
-    const NULL_NOT_ALLOWED = '#key# Null not allowed';
+    private $es;
+    const NULL_NOT_ALLOWED = '#key# Null not allowed.';
+    const IS_NOT_AUTHENTICATED = 'Not Authenticated.';
     
 
-    function __construct()
+    function __construct(Request $request)
     {
-        $this->er = App::make('EventRegist');
+        parent::__construct($request);
+        if($request->isMethod('get')){
+            $this->es = App::make('EventSelect');
+
+        }
+        if($request->isMethod('post')){
+            $this->er = App::make('EventRegist');
+        }
+        
     }
 
     /**
@@ -26,8 +37,20 @@ class EventController extends Controller
      */
     public function index()
     {
+        if(!$this->is_login()){
+            return [
+                'result' => 'failed',
+                'events' => [],
+                'is_login' => false    
+            ];
+        }
         //
-        return 'success';
+        $events = $this->es->main();
+        return [
+            'result' => $events ? 'success' : 'failed',
+            'events' => $events,
+            'is_login' => true
+        ];
     }
 
     /**
@@ -59,22 +82,23 @@ class EventController extends Controller
         ];
         //
         try{
+            if(!$this->is_login()){ throw new Exception(self::NOT_AUTHENTICATED); }
             foreach($inputs as $key){
                 if($request->filled($key)){
-                    $this->er->$key = $request->input($key);
+                    $this->er->$key = (int)$request->input($key);
                 }else{
                     throw new Exception(str_replace('#key#', $key, self::NULL_NOT_ALLOWED));
                 }
             }
             $this->er->set_start_datetime();
             $this->er->set_end_datetime();
-            $this->er->regist();
+            $result = $this->er->regist();
         }catch(Exception $e){
             echo $e->getMessage();
-            exit;
+            $result = false;
         }
 
-        return 'success';
+        return $result ? 'success' : 'failed';
         
     }
 
@@ -84,9 +108,31 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(string $id)
     {
+
+        $event = [];
         //
+        try{
+            if(!$this->is_login()){ throw new Exception(self::IS_NOT_AUTHENTICATED); }
+
+            $login_user_id = Auth::user()->user_id;
+
+            $this->es->event_id = (int)$id;
+            $event = $this->es->select_one();
+            
+        }catch(Exception $e){
+            echo $e->getMessage();
+            $login_user_id = null;
+            $event = [];
+        }
+
+        return [
+            'result' => $event ? 'success' : 'failed',
+            'event' => $event,
+            'login_user_id' => $login_user_id,
+            'is_login' => !is_null($login_user_id)
+        ];
     }
 
     /**

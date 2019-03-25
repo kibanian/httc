@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CoreService\CancelFeeCalcService;
+use App\CoreService\Cancel\CancelFeeCalcService;
 
 class CancelFeeCalcServiceProvider extends ServiceProvider
 {
